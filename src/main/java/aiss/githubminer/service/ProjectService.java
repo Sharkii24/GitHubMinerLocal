@@ -9,6 +9,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProjectService {
@@ -19,16 +23,41 @@ public class ProjectService {
     @Value("${githubminer.token}")
     private String token;
 
-    @Value("${githubminer.baseuri" + "projects/")
+    @Value("${githubminer.baseuri}" + "graphql")
     private String baseUri;
 
-    public Project getProjectDetail(String owner, Integer id){
-        String uri = baseUri+owner+"/projects/"+id;
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "Bearer "+ token);
-        HttpEntity<Project> request = new HttpEntity<>(null, headers);
-        ResponseEntity<Project> response = restTemplate.exchange(uri, HttpMethod.GET, request, Project.class);
-        return response.getBody();
+    public List<Project> getProjects(String owner, Integer num) {
+        String uri = baseUri;
+        ResponseEntity<Project[]> response = getProjectsToken(uri);
+        return Arrays.asList(response.getBody());
     }
 
+    private ResponseEntity<Project[]> getProjectsToken(String uri) {
+        try {
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Authorization", "Bearer " + token);
+            String query = """
+                    query {
+                          organization(login: "github") {
+                            projectsV2(first: 100) {
+                              nodes {
+                                id
+                                number
+                                title
+                                url
+                              }
+                            }
+                          }
+                        }
+                    """;
+            Map<String, String> body = new HashMap<>();
+            body.put("query", query);
+            HttpEntity<Map<String, String>> request = new HttpEntity<>(body, headers);
+            ResponseEntity<Project[]> response = restTemplate.exchange(uri, HttpMethod.POST, request, Project[].class);
+            return response;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

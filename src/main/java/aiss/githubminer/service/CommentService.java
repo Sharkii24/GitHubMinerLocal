@@ -34,7 +34,7 @@ public class CommentService {
     private ResponseEntity<Comment[]> getCommentsToken(String uri) {
         try {
             HttpHeaders headers = new HttpHeaders();
-            headers.set("Authorization", "Bearer "+token);
+            headers.set("Authorization", "Bearer " + token);
             HttpEntity<Comment[]> request = new HttpEntity<>(null, headers);
             ResponseEntity<Comment[]> response = restTemplate.exchange(uri, HttpMethod.GET, request, Comment[].class);
             return response;

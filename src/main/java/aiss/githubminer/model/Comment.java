@@ -11,12 +11,15 @@ public class Comment {
 
     @JsonProperty("id")
     private Integer id;
+    /*
     @JsonProperty("node_id")
     private String nodeId;
     @JsonProperty("url")
     private String url;
     @JsonProperty("html_url")
     private String htmlUrl;
+
+     */
     @JsonProperty("body")
     private String body;
     @JsonProperty("user")
@@ -25,10 +28,13 @@ public class Comment {
     private String createdAt;
     @JsonProperty("updated_at")
     private String updatedAt;
+    /*
     @JsonProperty("issue_url")
     private String issueUrl;
     @JsonProperty("author_association")
     private String authorAssociation;
+
+     */
 
     @JsonProperty("id")
     public Integer getId() {
@@ -40,6 +46,7 @@ public class Comment {
         this.id = id;
     }
 
+    /*
     @JsonProperty("node_id")
     public String getNodeId() {
         return nodeId;
@@ -69,6 +76,8 @@ public class Comment {
     public void setHtmlUrl(String htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
+
+     */
 
     @JsonProperty("body")
     public String getBody() {
@@ -110,6 +119,7 @@ public class Comment {
         this.updatedAt = updatedAt;
     }
 
+    /*
     @JsonProperty("issue_url")
     public String getIssueUrl() {
         return issueUrl;
@@ -130,6 +140,8 @@ public class Comment {
         this.authorAssociation = authorAssociation;
     }
 
+     */
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -138,6 +150,7 @@ public class Comment {
         sb.append('=');
         sb.append(((this.id == null)?"<null>":this.id));
         sb.append(',');
+        /*
         sb.append("nodeId");
         sb.append('=');
         sb.append(((this.nodeId == null)?"<null>":this.nodeId));
@@ -150,6 +163,8 @@ public class Comment {
         sb.append('=');
         sb.append(((this.htmlUrl == null)?"<null>":this.htmlUrl));
         sb.append(',');
+
+         */
         sb.append("body");
         sb.append('=');
         sb.append(((this.body == null)?"<null>":this.body));
@@ -166,6 +181,7 @@ public class Comment {
         sb.append('=');
         sb.append(((this.updatedAt == null)?"<null>":this.updatedAt));
         sb.append(',');
+        /*
         sb.append("issueUrl");
         sb.append('=');
         sb.append(((this.issueUrl == null)?"<null>":this.issueUrl));
@@ -174,6 +190,8 @@ public class Comment {
         sb.append('=');
         sb.append(((this.authorAssociation == null)?"<null>":this.authorAssociation));
         sb.append(',');
+
+         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

@@ -10,12 +10,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Issue {
 
-    @JsonProperty("id")
+    @JsonProperty("id")   //hace falta
     private Integer id;
-    @JsonProperty("node_id")
+    @JsonProperty("node_id")    //hace falta
     private String nodeId;
-    @JsonProperty("url")
+    @JsonProperty("url")    //hace falta
     private String url;
+    /*
     @JsonProperty("repository_url")
     private String repositoryUrl;
     @JsonProperty("labels_url")
@@ -38,18 +39,22 @@ public class Issue {
     private User user;
     @JsonProperty("labels")
     private List<Label> labels;
-    @JsonProperty("assignee")
+    @JsonProperty("assignee")   //hace falta
     private User assignee;  // Assignee (Issue) = User
-    @JsonProperty("assignees")
+    @JsonProperty("assignees")  //hace falta
     private List<User> assignees;    // Assignee__1 (Issue) = User
+    /*
     @JsonProperty("milestone")
     private Milestone milestone;
     @JsonProperty("locked")
     private Boolean locked;
     @JsonProperty("active_lock_reason")
     private String activeLockReason;
-    @JsonProperty("comments")
+
+     */
+    @JsonProperty("comments")   //hace falta
     private Integer comments;
+    /*
     @JsonProperty("pull_request")
     private PullRequest pullRequest;
     @JsonProperty("closed_at")
@@ -58,12 +63,15 @@ public class Issue {
     private String createdAt;
     @JsonProperty("updated_at")
     private String updatedAt;
+    /*
     @JsonProperty("closed_by")
     private User closedBy;  // ClosedBy (Issue) = User
     @JsonProperty("author_association")
     private String authorAssociation;
     @JsonProperty("state_reason")
     private String stateReason;
+
+     */
 
     @JsonProperty("id")
     public Integer getId() {
@@ -95,6 +103,7 @@ public class Issue {
         this.url = url;
     }
 
+    /*
     @JsonProperty("repository_url")
     public String getRepositoryUrl() {
         return repositoryUrl;
@@ -154,6 +163,8 @@ public class Issue {
     public void setNumber(Integer number) {
         this.number = number;
     }
+
+     */
 
     @JsonProperty("state")
     public String getState() {
@@ -225,6 +236,7 @@ public class Issue {
         this.assignees = assignees;
     }
 
+    /*
     @JsonProperty("milestone")
     public Milestone getMilestone() {
         return milestone;
@@ -255,6 +267,8 @@ public class Issue {
         this.activeLockReason = activeLockReason;
     }
 
+     */
+
     @JsonProperty("comments")
     public Integer getComments() {
         return comments;
@@ -265,6 +279,7 @@ public class Issue {
         this.comments = comments;
     }
 
+    /*
     @JsonProperty("pull_request")
     public PullRequest getPullRequest() {
         return pullRequest;
@@ -274,6 +289,8 @@ public class Issue {
     public void setPullRequest(PullRequest pullRequest) {
         this.pullRequest = pullRequest;
     }
+
+     */
 
     @JsonProperty("closed_at")
     public Object getClosedAt() {
@@ -305,6 +322,7 @@ public class Issue {
         this.updatedAt = updatedAt;
     }
 
+    /*
     @JsonProperty("closed_by")
     public User getClosedBy() {
         return closedBy;
@@ -335,6 +353,8 @@ public class Issue {
         this.stateReason = stateReason;
     }
 
+     */
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -351,6 +371,7 @@ public class Issue {
         sb.append('=');
         sb.append(((this.url == null)?"<null>":this.url));
         sb.append(',');
+        /*
         sb.append("repositoryUrl");
         sb.append('=');
         sb.append(((this.repositoryUrl == null)?"<null>":this.repositoryUrl));
@@ -403,6 +424,7 @@ public class Issue {
         sb.append('=');
         sb.append(((this.assignees == null)?"<null>":this.assignees));
         sb.append(',');
+        /*
         sb.append("milestone");
         sb.append('=');
         sb.append(((this.milestone == null)?"<null>":this.milestone));
@@ -415,14 +437,19 @@ public class Issue {
         sb.append('=');
         sb.append(((this.activeLockReason == null)?"<null>":this.activeLockReason));
         sb.append(',');
+
+         */
         sb.append("comments");
         sb.append('=');
         sb.append(((this.comments == null)?"<null>":this.comments));
         sb.append(',');
+        /*
         sb.append("pullRequest");
         sb.append('=');
         sb.append(((this.pullRequest == null)?"<null>":this.pullRequest));
         sb.append(',');
+
+         */
         sb.append("closedAt");
         sb.append('=');
         sb.append(((this.closedAt == null)?"<null>":this.closedAt));
@@ -435,6 +462,7 @@ public class Issue {
         sb.append('=');
         sb.append(((this.updatedAt == null)?"<null>":this.updatedAt));
         sb.append(',');
+        /*
         sb.append("closedBy");
         sb.append('=');
         sb.append(((this.closedBy == null)?"<null>":this.closedBy));
@@ -447,6 +475,8 @@ public class Issue {
         sb.append('=');
         sb.append(((this.stateReason == null)?"<null>":this.stateReason));
         sb.append(',');
+
+         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {
