@@ -27,17 +27,18 @@ public class Issue {
     private String eventsUrl;
     @JsonProperty("html_url")
     private String htmlUrl;
-    @JsonProperty("number")
+     */
+    @JsonProperty("number") //Identificador para obtener uno solo
     private Integer number;
-    @JsonProperty("state")
+    @JsonProperty("state")   //Hace falta
     private String state;
-    @JsonProperty("title")
+    @JsonProperty("title")   //hace falta
     private String title;
-    @JsonProperty("body")
+    @JsonProperty("body")    //Hace falta
     private String body;
-    @JsonProperty("user")
+    @JsonProperty("user")    //hace falta
     private User user;
-    @JsonProperty("labels")
+    @JsonProperty("labels")   //hace falta
     private List<Label> labels;
     @JsonProperty("assignee")   //hace falta
     private User assignee;  // Assignee (Issue) = User
@@ -57,18 +58,20 @@ public class Issue {
     /*
     @JsonProperty("pull_request")
     private PullRequest pullRequest;
-    @JsonProperty("closed_at")
+
+     */
+    @JsonProperty("closed_at")   //hace falta
     private Object closedAt;
-    @JsonProperty("created_at")
+    @JsonProperty("created_at")   //hace falta
     private String createdAt;
-    @JsonProperty("updated_at")
+    @JsonProperty("updated_at")   //hace falta
     private String updatedAt;
     /*
     @JsonProperty("closed_by")
     private User closedBy;  // ClosedBy (Issue) = User
     @JsonProperty("author_association")
     private String authorAssociation;
-    @JsonProperty("state_reason")
+    @JsonProperty("state_reason")  // sobra
     private String stateReason;
 
      */
@@ -392,6 +395,7 @@ public class Issue {
         sb.append('=');
         sb.append(((this.htmlUrl == null)?"<null>":this.htmlUrl));
         sb.append(',');
+        */
         sb.append("number");
         sb.append('=');
         sb.append(((this.number == null)?"<null>":this.number));
