@@ -1,6 +1,7 @@
 
 package aiss.githubminer.model;
 
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -8,19 +9,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Commit {
 
     @JsonProperty("url")
-    private String url;
+    private String url; // Hace falta
+    @JsonProperty("sha")  // referencia?
+    private String sha;
+    @JsonProperty("node_id")
+    private String nodeId;  // id?
+    @JsonProperty("commit")
+    private Commit__1 commit;   // Hace falta (Message) y el Author, dentro de este estan author_name,author_email y authored_date
     @JsonProperty("author")
-    private Author author;
+    private User author;    // Author__1 (Commit) = User Author necesitamos el name, email y date
     @JsonProperty("committer")
-    private Author committer;   // Commiter (Commit) = Author
-    @JsonProperty("message")
-    private String message;
-    @JsonProperty("tree")
-    private Tree tree;
-    @JsonProperty("comment_count")
-    private Integer commentCount;
-    @JsonProperty("verification")
-    private Verification verification;
+    private User committer; // Commiter__1 (Commit) = User Commiter necesitamos el name, email y date
+     /*
+    @JsonProperty("parents")
+    private List<Tree> parents; // Parent (Commit) = Tree
+    @JsonProperty("html_url")
+    private String htmlUrl;
+    @JsonProperty("comments_url")
+    private String commentsUrl;
+     */
 
     @JsonProperty("url")
     public String getUrl() {
@@ -32,65 +39,87 @@ public class Commit {
         this.url = url;
     }
 
+    @JsonProperty("sha")
+    public String getSha() {
+        return sha;
+    }
+
+    @JsonProperty("sha")
+    public void setSha(String sha) {
+        this.sha = sha;
+    }
+
+    @JsonProperty("node_id")
+    public String getNodeId() {
+        return nodeId;
+    }
+
+    @JsonProperty("node_id")
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
+    }
+
+    @JsonProperty("commit")
+    public Commit__1 getCommit() {
+        return commit;
+    }
+
+    @JsonProperty("commit")
+    public void setCommit(Commit__1 commit) {
+        this.commit = commit;
+    }
+
     @JsonProperty("author")
-    public Author getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
     @JsonProperty("author")
-    public void setAuthor(Author author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 
     @JsonProperty("committer")
-    public Author getCommitter() {
+    public User getCommitter() {
         return committer;
     }
 
     @JsonProperty("committer")
-    public void setCommitter(Author committer) {
+    public void setCommitter(User committer) {
         this.committer = committer;
     }
 
-    @JsonProperty("message")
-    public String getMessage() {
-        return message;
+    /*
+    @JsonProperty("html_url")
+    public String getHtmlUrl() {
+        return htmlUrl;
     }
 
-    @JsonProperty("message")
-    public void setMessage(String message) {
-        this.message = message;
+    @JsonProperty("html_url")
+    public void setHtmlUrl(String htmlUrl) {
+        this.htmlUrl = htmlUrl;
     }
 
-    @JsonProperty("tree")
-    public Tree getTree() {
-        return tree;
+    @JsonProperty("comments_url")
+    public String getCommentsUrl() {
+        return commentsUrl;
     }
 
-    @JsonProperty("tree")
-    public void setTree(Tree tree) {
-        this.tree = tree;
+    @JsonProperty("comments_url")
+    public void setCommentsUrl(String commentsUrl) {
+        this.commentsUrl = commentsUrl;
     }
 
-    @JsonProperty("comment_count")
-    public Integer getCommentCount() {
-        return commentCount;
+    @JsonProperty("parents")
+    public List<Tree> getParents() {
+        return parents;
     }
 
-    @JsonProperty("comment_count")
-    public void setCommentCount(Integer commentCount) {
-        this.commentCount = commentCount;
+    @JsonProperty("parents")
+    public void setParents(List<Tree> parents) {
+        this.parents = parents;
     }
-
-    @JsonProperty("verification")
-    public Verification getVerification() {
-        return verification;
-    }
-
-    @JsonProperty("verification")
-    public void setVerification(Verification verification) {
-        this.verification = verification;
-    }
+     */
 
     @Override
     public String toString() {
@@ -100,6 +129,18 @@ public class Commit {
         sb.append('=');
         sb.append(((this.url == null)?"<null>":this.url));
         sb.append(',');
+        sb.append("sha");
+        sb.append('=');
+        sb.append(((this.sha == null)?"<null>":this.sha));
+        sb.append(',');
+        sb.append("nodeId");
+        sb.append('=');
+        sb.append(((this.nodeId == null)?"<null>":this.nodeId));
+        sb.append(',');
+        sb.append("commit");
+        sb.append('=');
+        sb.append(((this.commit == null)?"<null>":this.commit));
+        sb.append(',');
         sb.append("author");
         sb.append('=');
         sb.append(((this.author == null)?"<null>":this.author));
@@ -108,22 +149,20 @@ public class Commit {
         sb.append('=');
         sb.append(((this.committer == null)?"<null>":this.committer));
         sb.append(',');
-        sb.append("message");
+        /*
+        sb.append("htmlUrl");
         sb.append('=');
-        sb.append(((this.message == null)?"<null>":this.message));
+        sb.append(((this.htmlUrl == null)?"<null>":this.htmlUrl));
         sb.append(',');
-        sb.append("tree");
+        sb.append("commentsUrl");
         sb.append('=');
-        sb.append(((this.tree == null)?"<null>":this.tree));
+        sb.append(((this.commentsUrl == null)?"<null>":this.commentsUrl));
         sb.append(',');
-        sb.append("commentCount");
+        sb.append("parents");
         sb.append('=');
-        sb.append(((this.commentCount == null)?"<null>":this.commentCount));
+        sb.append(((this.parents == null)?"<null>":this.parents));
         sb.append(',');
-        sb.append("verification");
-        sb.append('=');
-        sb.append(((this.verification == null)?"<null>":this.verification));
-        sb.append(',');
+         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

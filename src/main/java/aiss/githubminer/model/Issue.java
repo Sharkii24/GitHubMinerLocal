@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Issue {
 
     @JsonProperty("id")   //hace falta
-    private Integer id;
+    private String id;
     @JsonProperty("node_id")    //hace falta
     private String nodeId;
     @JsonProperty("url")    //hace falta
@@ -61,7 +61,7 @@ public class Issue {
 
      */
     @JsonProperty("closed_at")   //hace falta
-    private Object closedAt;
+    private String closedAt;
     @JsonProperty("created_at")   //hace falta
     private String createdAt;
     @JsonProperty("updated_at")   //hace falta
@@ -77,12 +77,12 @@ public class Issue {
      */
 
     @JsonProperty("id")
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -156,6 +156,7 @@ public class Issue {
     public void setHtmlUrl(String htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
+    */
 
     @JsonProperty("number")
     public Integer getNumber() {
@@ -166,8 +167,6 @@ public class Issue {
     public void setNumber(Integer number) {
         this.number = number;
     }
-
-     */
 
     @JsonProperty("state")
     public String getState() {
@@ -296,12 +295,12 @@ public class Issue {
      */
 
     @JsonProperty("closed_at")
-    public Object getClosedAt() {
+    public String getClosedAt() {
         return closedAt;
     }
 
     @JsonProperty("closed_at")
-    public void setClosedAt(Object closedAt) {
+    public void setClosedAt(String closedAt) {
         this.closedAt = closedAt;
     }
 

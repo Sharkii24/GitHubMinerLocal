@@ -34,7 +34,7 @@ class CommentServiceTest {
         String repo = "spring-framework";
         String id = "453283970";
         Comment comment = null;
-        comment = commentService.getCommentId(owner, repo, id);
+        comment = commentService.getCommentById(owner, repo, id);
         assertFalse(comment == null, "The comment is null!");
         System.out.println(comment);
     }

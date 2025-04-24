@@ -9,20 +9,21 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserComplete {
 
-    // USE THAT CLASS OR NOT?
-
-    @JsonProperty("login")
-    private String login;
     @JsonProperty("id")
-    private Integer id;
+    private String id;  //hace falta
+    @JsonProperty("login")
+    private String login;  //hace falta (username)
+    @JsonProperty("name")
+    private String name;   //hace falta
+    @JsonProperty("avatar_url")
+    private String avatarUrl;   //hace falta
+    @JsonProperty("url")
+    private String url;   //hace falta (web_url)
+    /*
     @JsonProperty("node_id")
     private String nodeId;
-    @JsonProperty("avatar_url")
-    private String avatarUrl;
     @JsonProperty("gravatar_id")
     private String gravatarId;
-    @JsonProperty("url")
-    private String url;
     @JsonProperty("html_url")
     private String htmlUrl;
     @JsonProperty("followers_url")
@@ -47,16 +48,16 @@ public class UserComplete {
     private String type;
     @JsonProperty("site_admin")
     private Boolean siteAdmin;
-    @JsonProperty("name")
-    private String name;
     @JsonProperty("company")
     private String company;
     @JsonProperty("blog")
     private String blog;
     @JsonProperty("location")
     private String location;
-    @JsonProperty("email")
+    */
+    @JsonProperty("email")  // Hace falta (Commit)
     private String email;
+    /*
     @JsonProperty("hireable")
     private Boolean hireable;
     @JsonProperty("bio")
@@ -75,6 +76,7 @@ public class UserComplete {
     private String createdAt;
     @JsonProperty("updated_at")
     private String updatedAt;
+    */
 
     @JsonProperty("login")
     public String getLogin() {
@@ -87,15 +89,36 @@ public class UserComplete {
     }
 
     @JsonProperty("id")
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
+    }
+
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @JsonProperty("name")
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /*
     @JsonProperty("node_id")
     public String getNodeId() {
         return nodeId;
@@ -124,16 +147,6 @@ public class UserComplete {
     @JsonProperty("gravatar_id")
     public void setGravatarId(String gravatarId) {
         this.gravatarId = gravatarId;
-    }
-
-    @JsonProperty("url")
-    public String getUrl() {
-        return url;
-    }
-
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     @JsonProperty("html_url")
@@ -256,16 +269,6 @@ public class UserComplete {
         this.siteAdmin = siteAdmin;
     }
 
-    @JsonProperty("name")
-    public String getName() {
-        return name;
-    }
-
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @JsonProperty("company")
     public String getCompany() {
         return company;
@@ -296,6 +299,8 @@ public class UserComplete {
         this.location = location;
     }
 
+     */
+
     @JsonProperty("email")
     public String getEmail() {
         return email;
@@ -306,6 +311,7 @@ public class UserComplete {
         this.email = email;
     }
 
+    /*
     @JsonProperty("hireable")
     public Boolean getHireable() {
         return hireable;
@@ -396,6 +402,8 @@ public class UserComplete {
         this.updatedAt = updatedAt;
     }
 
+     */
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -408,21 +416,27 @@ public class UserComplete {
         sb.append('=');
         sb.append(((this.id == null)?"<null>":this.id));
         sb.append(',');
-        sb.append("nodeId");
+        sb.append("name");
         sb.append('=');
-        sb.append(((this.nodeId == null)?"<null>":this.nodeId));
+        sb.append(((this.name == null)?"<null>":this.name));
         sb.append(',');
         sb.append("avatarUrl");
         sb.append('=');
         sb.append(((this.avatarUrl == null)?"<null>":this.avatarUrl));
         sb.append(',');
-        sb.append("gravatarId");
-        sb.append('=');
-        sb.append(((this.gravatarId == null)?"<null>":this.gravatarId));
-        sb.append(',');
         sb.append("url");
         sb.append('=');
         sb.append(((this.url == null)?"<null>":this.url));
+        sb.append(',');
+
+        /*
+        sb.append("nodeId");
+        sb.append('=');
+        sb.append(((this.nodeId == null)?"<null>":this.nodeId));
+        sb.append(',');
+        sb.append("gravatarId");
+        sb.append('=');
+        sb.append(((this.gravatarId == null)?"<null>":this.gravatarId));
         sb.append(',');
         sb.append("htmlUrl");
         sb.append('=');
@@ -472,10 +486,9 @@ public class UserComplete {
         sb.append('=');
         sb.append(((this.siteAdmin == null)?"<null>":this.siteAdmin));
         sb.append(',');
-        sb.append("name");
-        sb.append('=');
-        sb.append(((this.name == null)?"<null>":this.name));
-        sb.append(',');
+         */
+
+        /*
         sb.append("company");
         sb.append('=');
         sb.append(((this.company == null)?"<null>":this.company));
@@ -488,10 +501,12 @@ public class UserComplete {
         sb.append('=');
         sb.append(((this.location == null)?"<null>":this.location));
         sb.append(',');
+        */
         sb.append("email");
         sb.append('=');
         sb.append(((this.email == null)?"<null>":this.email));
         sb.append(',');
+        /*
         sb.append("hireable");
         sb.append('=');
         sb.append(((this.hireable == null)?"<null>":this.hireable));
@@ -528,6 +543,7 @@ public class UserComplete {
         sb.append('=');
         sb.append(((this.updatedAt == null)?"<null>":this.updatedAt));
         sb.append(',');
+         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

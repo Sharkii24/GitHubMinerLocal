@@ -26,13 +26,13 @@ public class IssueServiceTest {
     }
 
     @Test
-    @DisplayName("List of an Issue")
+    @DisplayName("Get an Issue")
     void getIssue() {
         String owner = "spring-projects";
         String repo = "spring-framework";
-        String number = "34800";
+        String number = "34810";
         Issue issue = null;
-        issue = service.getIssueId(owner, repo, number);
+        issue = service.getIssueByNumber(owner, repo, number);
         assertFalse(issue == null, "The issue is null!");
         System.out.println(issue);
     }
