@@ -6,22 +6,32 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class ProjectServiceTest {
+class ProjectServiceTest {
 
     @Autowired
     ProjectService projectService;
 
     @Test
-    @DisplayName("Get Projects of an organization")
-    void getProjectDetail() {
-        String owner = "github";
-        Integer number = 5;
+    @DisplayName("List of Projects of an organization")
+    void getProjects() {
+        String owner = "spring-projects";
         List<Project> projects = null;
-        projects = projectService.getProjects(owner, number);
-        assertNotNull(projects);
+        projects = projectService.getProjects(owner);
+        assertFalse(projects.isEmpty(), "The list of projects is empty!");
         System.out.println(projects);
+    }
+
+    @Test
+    @DisplayName("List of Projects by name")
+    void getProjectByName() {
+        String owner = "spring-projects";
+        String name = "spring-data-commons";
+        Project project = null;
+        project = projectService.getProjectByName(owner, name);
+        assertFalse(project == null, "The project is null!");
+        System.out.println(project);
     }
 }
