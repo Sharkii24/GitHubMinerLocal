@@ -34,12 +34,12 @@ public class Issue {
     private String state;
     @JsonProperty("title")   //hace falta
     private String title;
-    @JsonProperty("body")    //Hace falta
+    @JsonProperty("body")    //Hace falta (description?)
     private String body;
     @JsonProperty("user")    //hace falta
     private User user;
     @JsonProperty("labels")   //hace falta
-    private List<Label> labels;
+    private List<Label> labels; // To String (List<String>)
     @JsonProperty("assignee")   //hace falta
     private User assignee;  // Assignee (Issue) = User
     @JsonProperty("assignees")  //hace falta

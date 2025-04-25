@@ -7,14 +7,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Commit__1 {
 
+    /*
     @JsonProperty("url")
     private String url;
     @JsonProperty("author")
     private Author author;
+
+     */
     @JsonProperty("committer")
     private Author committer;   // Commiter (Commit) = Author
     @JsonProperty("message")
     private String message; // Hace falta (Commit)
+    /*
     @JsonProperty("tree")
     private Tree tree;
     @JsonProperty("comment_count")
@@ -42,6 +46,7 @@ public class Commit__1 {
         this.author = author;
     }
 
+    */
     @JsonProperty("committer")
     public Author getCommitter() {
         return committer;
@@ -62,6 +67,8 @@ public class Commit__1 {
         this.message = message;
     }
 
+
+    /*
     @JsonProperty("tree")
     public Tree getTree() {
         return tree;
@@ -91,11 +98,12 @@ public class Commit__1 {
     public void setVerification(Verification verification) {
         this.verification = verification;
     }
-
+    */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(Commit__1.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        /*
         sb.append("url");
         sb.append('=');
         sb.append(((this.url == null)?"<null>":this.url));
@@ -104,6 +112,8 @@ public class Commit__1 {
         sb.append('=');
         sb.append(((this.author == null)?"<null>":this.author));
         sb.append(',');
+
+         */
         sb.append("committer");
         sb.append('=');
         sb.append(((this.committer == null)?"<null>":this.committer));
@@ -112,6 +122,7 @@ public class Commit__1 {
         sb.append('=');
         sb.append(((this.message == null)?"<null>":this.message));
         sb.append(',');
+        /*
         sb.append("tree");
         sb.append('=');
         sb.append(((this.tree == null)?"<null>":this.tree));
@@ -124,6 +135,8 @@ public class Commit__1 {
         sb.append('=');
         sb.append(((this.verification == null)?"<null>":this.verification));
         sb.append(',');
+
+         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

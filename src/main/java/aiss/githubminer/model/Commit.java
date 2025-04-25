@@ -15,11 +15,12 @@ public class Commit {
     @JsonProperty("node_id")
     private String nodeId;  // id?
     @JsonProperty("commit")
-    private Commit__1 commit;   // Hace falta (Message) y el Author, dentro de este estan author_name,author_email y authored_date
+    private Commit__1 commit;   // Hace falta (Message) y el Author, dentro  de este estan author_name,author_email y authored_date
     @JsonProperty("author")
     private User author;    // Author__1 (Commit) = User Author necesitamos el name, email y date
     @JsonProperty("committer")
     private User committer; // Commiter__1 (Commit) = User Commiter necesitamos el name, email y date
+
      /*
     @JsonProperty("parents")
     private List<Tree> parents; // Parent (Commit) = Tree

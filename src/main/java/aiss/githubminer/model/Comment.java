@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Comment {
 
     @JsonProperty("id")
-    private Integer id;
+    private Integer id; // Hace falta
     /*
     @JsonProperty("node_id")
     private String nodeId;
@@ -21,13 +21,13 @@ public class Comment {
 
      */
     @JsonProperty("body")
-    private String body;
+    private String body;    // Hace falta
     @JsonProperty("user")
-    private User user;
+    private User user;  // Hace falta
     @JsonProperty("created_at")
-    private String createdAt;
+    private String createdAt;   // Hace falta
     @JsonProperty("updated_at")
-    private String updatedAt;
+    private String updatedAt;   // Hace falta
     /*
     @JsonProperty("issue_url")
     private String issueUrl;
