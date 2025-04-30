@@ -2,9 +2,7 @@
 package aiss.githubminer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Author {
@@ -12,11 +10,11 @@ public class Author {
     // Commiter (Commit) = Author
 
     @JsonProperty("name")
-    private String name;
+    private String name;  //author name
     @JsonProperty("email")
-    private String email;
+    private String email;  //author email
     @JsonProperty("date")
-    private String date;
+    private String date;  //authored date
 
     @JsonProperty("name")
     public String getName() {

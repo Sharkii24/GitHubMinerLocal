@@ -1,29 +1,28 @@
 
 package aiss.githubminer.model;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Commit {
 
-    @JsonProperty("url")
-    private String url; // Hace falta
-    @JsonProperty("sha")  // referencia?
-    private String sha;
-    @JsonProperty("node_id")
-    private String nodeId;  // id?
+    @JsonProperty("sha")
+    private String sha; // Hace falta (id Commit)
     @JsonProperty("commit")
-    private Commit__1 commit;   // Hace falta (Message) y el Author, dentro  de este estan author_name,author_email y authored_date
-    @JsonProperty("author")
-    private User author;    // Author__1 (Commit) = User Author necesitamos el name, email y date
-    @JsonProperty("committer")
-    private User committer; // Commiter__1 (Commit) = User Commiter necesitamos el name, email y date
+    private Commit__1 commit;   // Hace falta (Message) y el Author, dentro  de este estan author_name, author_email y authored_date
+    @JsonProperty("url")
+    private String url; // Hace falta (webUrl Commit)
 
-     /*
+    /*
+    @JsonProperty("author")
+    private User author;
+    @JsonProperty("committer")
+    private User committer;
+    @JsonProperty("node_id")
+    private String nodeId;
     @JsonProperty("parents")
-    private List<Tree> parents; // Parent (Commit) = Tree
+    private List<Tree> parents;
     @JsonProperty("html_url")
     private String htmlUrl;
     @JsonProperty("comments_url")
@@ -50,16 +49,6 @@ public class Commit {
         this.sha = sha;
     }
 
-    @JsonProperty("node_id")
-    public String getNodeId() {
-        return nodeId;
-    }
-
-    @JsonProperty("node_id")
-    public void setNodeId(String nodeId) {
-        this.nodeId = nodeId;
-    }
-
     @JsonProperty("commit")
     public Commit__1 getCommit() {
         return commit;
@@ -69,6 +58,8 @@ public class Commit {
     public void setCommit(Commit__1 commit) {
         this.commit = commit;
     }
+
+    /*
 
     @JsonProperty("author")
     public User getAuthor() {
@@ -80,17 +71,6 @@ public class Commit {
         this.author = author;
     }
 
-    @JsonProperty("committer")
-    public User getCommitter() {
-        return committer;
-    }
-
-    @JsonProperty("committer")
-    public void setCommitter(User committer) {
-        this.committer = committer;
-    }
-
-    /*
     @JsonProperty("html_url")
     public String getHtmlUrl() {
         return htmlUrl;
@@ -120,6 +100,27 @@ public class Commit {
     public void setParents(List<Tree> parents) {
         this.parents = parents;
     }
+
+    @JsonProperty("node_id")
+    public String getNodeId() {
+        return nodeId;
+    }
+
+    @JsonProperty("node_id")
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
+    }
+
+    @JsonProperty("committer")
+    public User getCommitter() {
+        return committer;
+    }
+
+    @JsonProperty("committer")
+    public void setCommitter(User committer) {
+        this.committer = committer;
+    }
+
      */
 
     @Override
@@ -134,26 +135,24 @@ public class Commit {
         sb.append('=');
         sb.append(((this.sha == null)?"<null>":this.sha));
         sb.append(',');
-        sb.append("nodeId");
-        sb.append('=');
-        sb.append(((this.nodeId == null)?"<null>":this.nodeId));
-        sb.append(',');
         sb.append("commit");
         sb.append('=');
         sb.append(((this.commit == null)?"<null>":this.commit));
         sb.append(',');
+
+        /*
+        sb.append("author");
         sb.append("author");
         sb.append('=');
         sb.append(((this.author == null)?"<null>":this.author));
         sb.append(',');
-        sb.append("committer");
-        sb.append('=');
-        sb.append(((this.committer == null)?"<null>":this.committer));
-        sb.append(',');
-        /*
         sb.append("htmlUrl");
         sb.append('=');
         sb.append(((this.htmlUrl == null)?"<null>":this.htmlUrl));
+        sb.append(',');
+        sb.append('=');
+        sb.append("nodeId");
+        sb.append(((this.nodeId == null)?"<null>":this.nodeId));
         sb.append(',');
         sb.append("commentsUrl");
         sb.append('=');
@@ -163,7 +162,12 @@ public class Commit {
         sb.append('=');
         sb.append(((this.parents == null)?"<null>":this.parents));
         sb.append(',');
+        sb.append("committer");
+        sb.append('=');
+        sb.append(((this.committer == null)?"<null>":this.committer));
+        sb.append(',');
          */
+
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

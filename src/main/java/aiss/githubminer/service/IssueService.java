@@ -18,8 +18,10 @@ public class IssueService {
     @Value("${githubminer.baseUri}" + "repos/")
     private String baseUri;
 
-    public List<Issue> getIssues(String owner, String repo) {
-        String uri = baseUri + owner + "/" + repo + "/issues?per_page=5";
+    public List<Issue> getIssues(String owner, String repo, String sinceIssues) {
+        ZonedDateTime dateTime = ZonedDateTime.now(ZoneOffset.UTC).minusDays(Integer.parseInt(sinceIssues));
+        String since = dateTime.format(DateTimeFormatter.ISO_INSTANT);
+        String uri = baseUri + owner + "/" + repo + "/issues?since=" + since;
         ResponseEntity<Issue[]> response = authorizationService.getWithToken(uri,Issue[].class);
         return Arrays.asList(response.getBody());
     }

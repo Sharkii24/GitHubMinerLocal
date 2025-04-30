@@ -21,8 +21,9 @@ class CommitServiceTest {
     void getCommits() {
         String owner = "spring-projects";
         String repo = "spring-framework";
+        String sinceCommits = "5";
         List<Commit> commits = null;
-        commits = commitService.getCommits(owner, repo);
+        commits = commitService.getCommits(owner, repo, sinceCommits);
         assertFalse(commits.isEmpty(), "The list of commits is empty!");
         System.out.println(commits);
     }

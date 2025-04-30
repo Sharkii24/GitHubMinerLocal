@@ -2,9 +2,7 @@
 package aiss.githubminer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
@@ -17,18 +15,20 @@ public class User {
     // Author__1 (Commit) = User
     // Commiter__1 (Commit) = User
 
-    @JsonProperty("login")
-    private String login;
     @JsonProperty("id")
-    private Integer id;
+    private String id; // Hace falta (id User)
+    @JsonProperty("login")
+    private String login;   // Hace falta (username User)
+    @JsonProperty("avatar_url")
+    private String avatarUrl;   // Hace falta (avatarUrl User)
+    @JsonProperty("url")
+    private String url; // Hace falta (webUrl User)
+
+    /*
     @JsonProperty("node_id")
     private String nodeId;
-    @JsonProperty("avatar_url")
-    private String avatarUrl;
     @JsonProperty("gravatar_id")
     private String gravatarId;
-    @JsonProperty("url")
-    private String url;
     @JsonProperty("html_url")
     private String htmlUrl;
     @JsonProperty("followers_url")
@@ -54,6 +54,8 @@ public class User {
     @JsonProperty("site_admin")
     private Boolean siteAdmin;
 
+     */
+
     @JsonProperty("login")
     public String getLogin() {
         return login;
@@ -65,23 +67,13 @@ public class User {
     }
 
     @JsonProperty("id")
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    @JsonProperty("node_id")
-    public String getNodeId() {
-        return nodeId;
-    }
-
-    @JsonProperty("node_id")
-    public void setNodeId(String nodeId) {
-        this.nodeId = nodeId;
     }
 
     @JsonProperty("avatar_url")
@@ -94,16 +86,6 @@ public class User {
         this.avatarUrl = avatarUrl;
     }
 
-    @JsonProperty("gravatar_id")
-    public String getGravatarId() {
-        return gravatarId;
-    }
-
-    @JsonProperty("gravatar_id")
-    public void setGravatarId(String gravatarId) {
-        this.gravatarId = gravatarId;
-    }
-
     @JsonProperty("url")
     public String getUrl() {
         return url;
@@ -112,6 +94,28 @@ public class User {
     @JsonProperty("url")
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    /*
+
+    @JsonProperty("node_id")
+    public String getNodeId() {
+        return nodeId;
+    }
+
+    @JsonProperty("node_id")
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
+    }
+
+    @JsonProperty("gravatar_id")
+    public String getGravatarId() {
+        return gravatarId;
+    }
+
+    @JsonProperty("gravatar_id")
+    public void setGravatarId(String gravatarId) {
+        this.gravatarId = gravatarId;
     }
 
     @JsonProperty("html_url")
@@ -234,6 +238,8 @@ public class User {
         this.siteAdmin = siteAdmin;
     }
 
+     */
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -246,21 +252,22 @@ public class User {
         sb.append('=');
         sb.append(((this.id == null)?"<null>":this.id));
         sb.append(',');
-        sb.append("nodeId");
-        sb.append('=');
-        sb.append(((this.nodeId == null)?"<null>":this.nodeId));
-        sb.append(',');
         sb.append("avatarUrl");
         sb.append('=');
         sb.append(((this.avatarUrl == null)?"<null>":this.avatarUrl));
         sb.append(',');
-        sb.append("gravatarId");
-        sb.append('=');
-        sb.append(((this.gravatarId == null)?"<null>":this.gravatarId));
-        sb.append(',');
         sb.append("url");
         sb.append('=');
         sb.append(((this.url == null)?"<null>":this.url));
+        sb.append(',');
+        /*
+        sb.append("nodeId");
+        sb.append('=');
+        sb.append(((this.nodeId == null)?"<null>":this.nodeId));
+        sb.append(',');
+        sb.append("gravatarId");
+        sb.append('=');
+        sb.append(((this.gravatarId == null)?"<null>":this.gravatarId));
         sb.append(',');
         sb.append("htmlUrl");
         sb.append('=');
@@ -310,6 +317,8 @@ public class User {
         sb.append('=');
         sb.append(((this.siteAdmin == null)?"<null>":this.siteAdmin));
         sb.append(',');
+
+         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

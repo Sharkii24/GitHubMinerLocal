@@ -3,20 +3,43 @@ package aiss.githubminer.model;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Issue {
 
-    @JsonProperty("id")   //hace falta
+    @JsonProperty("id")   //Hace falta (id Issue)
     private String id;
-    @JsonProperty("node_id")    //hace falta
-    private String nodeId;
-    @JsonProperty("url")    //hace falta
-    private String url;
+    @JsonProperty("title")   //Hace falta (title Issue)
+    private String title;
+    @JsonProperty("body")    //Hace falta (description Issue)
+    private String body;
+    @JsonProperty("state")   //Hace falta (state Issue)
+    private String state;
+    @JsonProperty("created_at")   //Hace falta (createdAt Issue)
+    private String createdAt;
+    @JsonProperty("updated_at")   //Hace falta (updatedAt Issue)
+    private String updatedAt;
+    @JsonProperty("closed_at")   //Hace falta (closedAt Issue)
+    private String closedAt;
+    @JsonProperty("labels")   //Hace falta (labels Issue)
+    private List<Label> labels; // To String (List<String>)
+    @JsonProperty("number") //Hace falta (Identificador individual Get Issue)
+    private Integer number;
+    @JsonProperty("assignee")   //Hace falta (assignee Issue)
+    private User assignee;  // Assignee (Issue) = User
+    @JsonProperty("user")    //Hace falta (author Issue)
+    private User user;
+    @JsonProperty("assignees")  //Hace falta (assignees Issue)
+    private List<User> assignees;    // Assignee__1 (Issue) = User
+
     /*
+    @JsonProperty("comments")
+    private Integer comments;
+    @JsonProperty("url")
+    private String url;
+    @JsonProperty("node_id")
+    private String nodeId;
     @JsonProperty("repository_url")
     private String repositoryUrl;
     @JsonProperty("labels_url")
@@ -27,46 +50,14 @@ public class Issue {
     private String eventsUrl;
     @JsonProperty("html_url")
     private String htmlUrl;
-     */
-    @JsonProperty("number") //Identificador para obtener uno solo
-    private Integer number;
-    @JsonProperty("state")   //Hace falta
-    private String state;
-    @JsonProperty("title")   //hace falta
-    private String title;
-    @JsonProperty("body")    //Hace falta (description?)
-    private String body;
-    @JsonProperty("user")    //hace falta
-    private User user;
-    @JsonProperty("labels")   //hace falta
-    private List<Label> labels; // To String (List<String>)
-    @JsonProperty("assignee")   //hace falta
-    private User assignee;  // Assignee (Issue) = User
-    @JsonProperty("assignees")  //hace falta
-    private List<User> assignees;    // Assignee__1 (Issue) = User
-    /*
     @JsonProperty("milestone")
     private Milestone milestone;
     @JsonProperty("locked")
     private Boolean locked;
     @JsonProperty("active_lock_reason")
     private String activeLockReason;
-
-     */
-    @JsonProperty("comments")   //hace falta
-    private Integer comments;
-    /*
     @JsonProperty("pull_request")
     private PullRequest pullRequest;
-
-     */
-    @JsonProperty("closed_at")   //hace falta
-    private String closedAt;
-    @JsonProperty("created_at")   //hace falta
-    private String createdAt;
-    @JsonProperty("updated_at")   //hace falta
-    private String updatedAt;
-    /*
     @JsonProperty("closed_by")
     private User closedBy;  // ClosedBy (Issue) = User
     @JsonProperty("author_association")
@@ -85,78 +76,6 @@ public class Issue {
     public void setId(String id) {
         this.id = id;
     }
-
-    @JsonProperty("node_id")
-    public String getNodeId() {
-        return nodeId;
-    }
-
-    @JsonProperty("node_id")
-    public void setNodeId(String nodeId) {
-        this.nodeId = nodeId;
-    }
-
-    @JsonProperty("url")
-    public String getUrl() {
-        return url;
-    }
-
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    /*
-    @JsonProperty("repository_url")
-    public String getRepositoryUrl() {
-        return repositoryUrl;
-    }
-
-    @JsonProperty("repository_url")
-    public void setRepositoryUrl(String repositoryUrl) {
-        this.repositoryUrl = repositoryUrl;
-    }
-
-    @JsonProperty("labels_url")
-    public String getLabelsUrl() {
-        return labelsUrl;
-    }
-
-    @JsonProperty("labels_url")
-    public void setLabelsUrl(String labelsUrl) {
-        this.labelsUrl = labelsUrl;
-    }
-
-    @JsonProperty("comments_url")
-    public String getCommentsUrl() {
-        return commentsUrl;
-    }
-
-    @JsonProperty("comments_url")
-    public void setCommentsUrl(String commentsUrl) {
-        this.commentsUrl = commentsUrl;
-    }
-
-    @JsonProperty("events_url")
-    public String getEventsUrl() {
-        return eventsUrl;
-    }
-
-    @JsonProperty("events_url")
-    public void setEventsUrl(String eventsUrl) {
-        this.eventsUrl = eventsUrl;
-    }
-
-    @JsonProperty("html_url")
-    public String getHtmlUrl() {
-        return htmlUrl;
-    }
-
-    @JsonProperty("html_url")
-    public void setHtmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
-    }
-    */
 
     @JsonProperty("number")
     public Integer getNumber() {
@@ -238,62 +157,6 @@ public class Issue {
         this.assignees = assignees;
     }
 
-    /*
-    @JsonProperty("milestone")
-    public Milestone getMilestone() {
-        return milestone;
-    }
-
-    @JsonProperty("milestone")
-    public void setMilestone(Milestone milestone) {
-        this.milestone = milestone;
-    }
-
-    @JsonProperty("locked")
-    public Boolean getLocked() {
-        return locked;
-    }
-
-    @JsonProperty("locked")
-    public void setLocked(Boolean locked) {
-        this.locked = locked;
-    }
-
-    @JsonProperty("active_lock_reason")
-    public String getActiveLockReason() {
-        return activeLockReason;
-    }
-
-    @JsonProperty("active_lock_reason")
-    public void setActiveLockReason(String activeLockReason) {
-        this.activeLockReason = activeLockReason;
-    }
-
-     */
-
-    @JsonProperty("comments")
-    public Integer getComments() {
-        return comments;
-    }
-
-    @JsonProperty("comments")
-    public void setComments(Integer comments) {
-        this.comments = comments;
-    }
-
-    /*
-    @JsonProperty("pull_request")
-    public PullRequest getPullRequest() {
-        return pullRequest;
-    }
-
-    @JsonProperty("pull_request")
-    public void setPullRequest(PullRequest pullRequest) {
-        this.pullRequest = pullRequest;
-    }
-
-     */
-
     @JsonProperty("closed_at")
     public String getClosedAt() {
         return closedAt;
@@ -325,6 +188,127 @@ public class Issue {
     }
 
     /*
+
+    @JsonProperty("comments")
+    public Integer getComments() {
+        return comments;
+    }
+
+    @JsonProperty("comments")
+    public void setComments(Integer comments) {
+        this.comments = comments;
+    }
+
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
+    }
+
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @JsonProperty("node_id")
+    public String getNodeId() {
+        return nodeId;
+    }
+
+    @JsonProperty("node_id")
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
+    }
+
+    @JsonProperty("repository_url")
+    public String getRepositoryUrl() {
+        return repositoryUrl;
+    }
+
+    @JsonProperty("repository_url")
+    public void setRepositoryUrl(String repositoryUrl) {
+        this.repositoryUrl = repositoryUrl;
+    }
+
+    @JsonProperty("labels_url")
+    public String getLabelsUrl() {
+        return labelsUrl;
+    }
+
+    @JsonProperty("labels_url")
+    public void setLabelsUrl(String labelsUrl) {
+        this.labelsUrl = labelsUrl;
+    }
+
+    @JsonProperty("comments_url")
+    public String getCommentsUrl() {
+        return commentsUrl;
+    }
+
+    @JsonProperty("comments_url")
+    public void setCommentsUrl(String commentsUrl) {
+        this.commentsUrl = commentsUrl;
+    }
+
+    @JsonProperty("events_url")
+    public String getEventsUrl() {
+        return eventsUrl;
+    }
+
+    @JsonProperty("events_url")
+    public void setEventsUrl(String eventsUrl) {
+        this.eventsUrl = eventsUrl;
+    }
+
+    @JsonProperty("html_url")
+    public String getHtmlUrl() {
+        return htmlUrl;
+    }
+
+    @JsonProperty("html_url")
+    public void setHtmlUrl(String htmlUrl) {
+        this.htmlUrl = htmlUrl;
+    }
+
+    @JsonProperty("milestone")
+    public Milestone getMilestone() {
+        return milestone;
+    }
+
+    @JsonProperty("milestone")
+    public void setMilestone(Milestone milestone) {
+        this.milestone = milestone;
+    }
+
+    @JsonProperty("locked")
+    public Boolean getLocked() {
+        return locked;
+    }
+
+    @JsonProperty("locked")
+    public void setLocked(Boolean locked) {
+        this.locked = locked;
+    }
+
+    @JsonProperty("active_lock_reason")
+    public String getActiveLockReason() {
+        return activeLockReason;
+    }
+
+    @JsonProperty("active_lock_reason")
+    public void setActiveLockReason(String activeLockReason) {
+        this.activeLockReason = activeLockReason;
+    }
+
+    @JsonProperty("pull_request")
+    public PullRequest getPullRequest() {
+        return pullRequest;
+    }
+
+    @JsonProperty("pull_request")
+    public void setPullRequest(PullRequest pullRequest) {
+        this.pullRequest = pullRequest;
+    }
+
     @JsonProperty("closed_by")
     public User getClosedBy() {
         return closedBy;
@@ -365,36 +349,6 @@ public class Issue {
         sb.append('=');
         sb.append(((this.id == null)?"<null>":this.id));
         sb.append(',');
-        sb.append("nodeId");
-        sb.append('=');
-        sb.append(((this.nodeId == null)?"<null>":this.nodeId));
-        sb.append(',');
-        sb.append("url");
-        sb.append('=');
-        sb.append(((this.url == null)?"<null>":this.url));
-        sb.append(',');
-        /*
-        sb.append("repositoryUrl");
-        sb.append('=');
-        sb.append(((this.repositoryUrl == null)?"<null>":this.repositoryUrl));
-        sb.append(',');
-        sb.append("labelsUrl");
-        sb.append('=');
-        sb.append(((this.labelsUrl == null)?"<null>":this.labelsUrl));
-        sb.append(',');
-        sb.append("commentsUrl");
-        sb.append('=');
-        sb.append(((this.commentsUrl == null)?"<null>":this.commentsUrl));
-        sb.append(',');
-        sb.append("eventsUrl");
-        sb.append('=');
-        sb.append(((this.eventsUrl == null)?"<null>":this.eventsUrl));
-        sb.append(',');
-        sb.append("htmlUrl");
-        sb.append('=');
-        sb.append(((this.htmlUrl == null)?"<null>":this.htmlUrl));
-        sb.append(',');
-        */
         sb.append("number");
         sb.append('=');
         sb.append(((this.number == null)?"<null>":this.number));
@@ -427,32 +381,6 @@ public class Issue {
         sb.append('=');
         sb.append(((this.assignees == null)?"<null>":this.assignees));
         sb.append(',');
-        /*
-        sb.append("milestone");
-        sb.append('=');
-        sb.append(((this.milestone == null)?"<null>":this.milestone));
-        sb.append(',');
-        sb.append("locked");
-        sb.append('=');
-        sb.append(((this.locked == null)?"<null>":this.locked));
-        sb.append(',');
-        sb.append("activeLockReason");
-        sb.append('=');
-        sb.append(((this.activeLockReason == null)?"<null>":this.activeLockReason));
-        sb.append(',');
-
-         */
-        sb.append("comments");
-        sb.append('=');
-        sb.append(((this.comments == null)?"<null>":this.comments));
-        sb.append(',');
-        /*
-        sb.append("pullRequest");
-        sb.append('=');
-        sb.append(((this.pullRequest == null)?"<null>":this.pullRequest));
-        sb.append(',');
-
-         */
         sb.append("closedAt");
         sb.append('=');
         sb.append(((this.closedAt == null)?"<null>":this.closedAt));
@@ -466,6 +394,54 @@ public class Issue {
         sb.append(((this.updatedAt == null)?"<null>":this.updatedAt));
         sb.append(',');
         /*
+        sb.append("comments");
+        sb.append('=');
+        sb.append(((this.comments == null)?"<null>":this.comments));
+        sb.append(',');
+        sb.append("url");
+        sb.append('=');
+        sb.append(((this.url == null)?"<null>":this.url));
+        sb.append(',');
+        sb.append("nodeId");
+        sb.append('=');
+        sb.append(((this.nodeId == null)?"<null>":this.nodeId));
+        sb.append(',');
+        sb.append("repositoryUrl");
+        sb.append('=');
+        sb.append(((this.repositoryUrl == null)?"<null>":this.repositoryUrl));
+        sb.append(',');
+        sb.append("labelsUrl");
+        sb.append('=');
+        sb.append(((this.labelsUrl == null)?"<null>":this.labelsUrl));
+        sb.append(',');
+        sb.append("commentsUrl");
+        sb.append('=');
+        sb.append(((this.commentsUrl == null)?"<null>":this.commentsUrl));
+        sb.append(',');
+        sb.append("eventsUrl");
+        sb.append('=');
+        sb.append(((this.eventsUrl == null)?"<null>":this.eventsUrl));
+        sb.append(',');
+        sb.append("htmlUrl");
+        sb.append('=');
+        sb.append(((this.htmlUrl == null)?"<null>":this.htmlUrl));
+        sb.append(',');
+        sb.append("milestone");
+        sb.append('=');
+        sb.append(((this.milestone == null)?"<null>":this.milestone));
+        sb.append(',');
+        sb.append("locked");
+        sb.append('=');
+        sb.append(((this.locked == null)?"<null>":this.locked));
+        sb.append(',');
+        sb.append("activeLockReason");
+        sb.append('=');
+        sb.append(((this.activeLockReason == null)?"<null>":this.activeLockReason));
+        sb.append(',');
+        sb.append("pullRequest");
+        sb.append('=');
+        sb.append(((this.pullRequest == null)?"<null>":this.pullRequest));
+        sb.append(',');
         sb.append("closedBy");
         sb.append('=');
         sb.append(((this.closedBy == null)?"<null>":this.closedBy));
@@ -478,7 +454,6 @@ public class Issue {
         sb.append('=');
         sb.append(((this.stateReason == null)?"<null>":this.stateReason));
         sb.append(',');
-
          */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');

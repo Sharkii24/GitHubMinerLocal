@@ -5,8 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.TestPropertySource;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,5 +35,17 @@ class CommentServiceTest {
         comment = commentService.getCommentById(owner, repo, id);
         assertFalse(comment == null, "The comment is null!");
         System.out.println(comment);
+    }
+
+    @Test
+    @DisplayName("List of Comment with an Issue Number")
+    void getCommentByIssueNumber() {
+        String owner = "spring-projects";
+        String repo = "spring-framework";
+        String issueNumber = "28382";
+        List<Comment> comments = null;
+        comments = commentService.getCommentByIssueNumber(owner, repo, issueNumber);
+        assertFalse(comments.isEmpty(), "The list of comments is empty!");
+        System.out.println(comments);
     }
 }

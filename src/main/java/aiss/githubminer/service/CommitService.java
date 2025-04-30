@@ -20,8 +20,10 @@ public class CommitService {
 
     // Service to list Commits
     // {owner}/{repo}/commits
-    public List<Commit> getCommits(String owner, String repo) {
-        String uri = baseUri + owner + "/" + repo + "/commits";
+    public List<Commit> getCommits(String owner, String repo, String sinceCommits) {
+        ZonedDateTime dateTime = ZonedDateTime.now(ZoneOffset.UTC).minusDays(Integer.parseInt(sinceCommits));
+        String since = dateTime.format(DateTimeFormatter.ISO_INSTANT);
+        String uri = baseUri + owner + "/" + repo + "/commits?since=" + since;
         ResponseEntity<Commit[]> response = authorizationService.getWithToken(uri, Commit[].class);
         return Arrays.asList(response.getBody());
     }

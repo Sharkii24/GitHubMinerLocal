@@ -31,4 +31,11 @@ public class CommentService {
         ResponseEntity<Comment> response = authorizationService.getWithToken(uri, Comment.class);
         return response.getBody();
     }
+
+    // Service to list a Comment of an issue number
+    public List<Comment> getCommentByIssueNumber(String owner, String repo, String issueNumber) {
+        String uri = baseUri + owner + "/" + repo + "/issues/" + issueNumber + "/comments";
+        ResponseEntity<Comment[]> response = authorizationService.getWithToken(uri, Comment[].class);
+        return Arrays.asList(response.getBody());
+    }
 }

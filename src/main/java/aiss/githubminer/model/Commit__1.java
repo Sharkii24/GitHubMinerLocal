@@ -7,33 +7,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Commit__1 {
 
+    @JsonProperty("message")
+    private String message; // Hace falta (message Commit)
+    @JsonProperty("author")
+    private Author author;  // Hace falta (author
+
     /*
     @JsonProperty("url")
     private String url;
-    @JsonProperty("author")
-    private Author author;
-
-     */
     @JsonProperty("committer")
-    private Author committer;   // Commiter (Commit) = Author
-    @JsonProperty("message")
-    private String message; // Hace falta (Commit)
-    /*
+    private Author committer;
     @JsonProperty("tree")
     private Tree tree;
     @JsonProperty("comment_count")
     private Integer commentCount;
     @JsonProperty("verification")
     private Verification verification;
+    */
 
-    @JsonProperty("url")
-    public String getUrl() {
-        return url;
+    @JsonProperty("message")
+    public String getMessage() {
+        return message;
     }
 
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
+    @JsonProperty("message")
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     @JsonProperty("author")
@@ -46,7 +45,17 @@ public class Commit__1 {
         this.author = author;
     }
 
-    */
+    /*
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
+    }
+
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     @JsonProperty("committer")
     public Author getCommitter() {
         return committer;
@@ -57,18 +66,6 @@ public class Commit__1 {
         this.committer = committer;
     }
 
-    @JsonProperty("message")
-    public String getMessage() {
-        return message;
-    }
-
-    @JsonProperty("message")
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-
-    /*
     @JsonProperty("tree")
     public Tree getTree() {
         return tree;
@@ -98,31 +95,30 @@ public class Commit__1 {
     public void setVerification(Verification verification) {
         this.verification = verification;
     }
-    */
+
+     */
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(Commit__1.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        /*
-        sb.append("url");
+        sb.append("message");
         sb.append('=');
-        sb.append(((this.url == null)?"<null>":this.url));
+        sb.append(((this.message == null)?"<null>":this.message));
         sb.append(',');
         sb.append("author");
         sb.append('=');
         sb.append(((this.author == null)?"<null>":this.author));
         sb.append(',');
-
-         */
+        /*
+        sb.append("url");
+        sb.append('=');
+        sb.append(((this.url == null)?"<null>":this.url));
+        sb.append(',');
         sb.append("committer");
         sb.append('=');
         sb.append(((this.committer == null)?"<null>":this.committer));
         sb.append(',');
-        sb.append("message");
-        sb.append('=');
-        sb.append(((this.message == null)?"<null>":this.message));
-        sb.append(',');
-        /*
         sb.append("tree");
         sb.append('=');
         sb.append(((this.tree == null)?"<null>":this.tree));

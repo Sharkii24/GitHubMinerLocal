@@ -1,25 +1,22 @@
 
 package aiss.githubminer.model;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Project {
 
     @JsonProperty("id")
-    private Integer id; // Hace falta
+    private String id; // Hace falta
+    @JsonProperty("name")
+    private String name;    // Hace falta
+    @JsonProperty("url")
+    private String url; //hace falta
+
     /*
     @JsonProperty("node_id")
     private String nodeId;
-
-     */
-    @JsonProperty("name")
-    private String name;    // Hace falta
-    /*
     @JsonProperty("full_name")
     private String fullName;
     @JsonProperty("owner")
@@ -32,11 +29,6 @@ public class Project {
     private String description;
     @JsonProperty("fork")
     private Boolean fork;
-
-     */
-    @JsonProperty("url")
-    private String url; //hace falta
-    /*
     @JsonProperty("archive_url")
     private String archiveUrl;
     @JsonProperty("assignees_url")
@@ -201,13 +193,33 @@ public class Project {
      */
 
     @JsonProperty("id")
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    @JsonProperty("name")
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
+    }
+
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     /*
@@ -221,19 +233,6 @@ public class Project {
         this.nodeId = nodeId;
     }
 
-     */
-
-    @JsonProperty("name")
-    public String getName() {
-        return name;
-    }
-
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /*
     @JsonProperty("full_name")
     public String getFullName() {
         return fullName;
@@ -294,19 +293,6 @@ public class Project {
         this.fork = fork;
     }
 
-    */
-
-    @JsonProperty("url")
-    public String getUrl() {
-        return url;
-    }
-
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    /*
     @JsonProperty("archive_url")
     public String getArchiveUrl() {
         return archiveUrl;
@@ -1115,17 +1101,19 @@ public class Project {
         sb.append('=');
         sb.append(((this.id == null)?"<null>":this.id));
         sb.append(',');
+        sb.append("name");
+        sb.append('=');
+        sb.append(((this.name == null)?"<null>":this.name));
+        sb.append(',');
+        sb.append("url");
+        sb.append('=');
+        sb.append(((this.url == null)?"<null>":this.url));
+        sb.append(',');
         /*
         sb.append("nodeId");
         sb.append('=');
         sb.append(((this.nodeId == null)?"<null>":this.nodeId));
         sb.append(',');
-         */
-        sb.append("name");
-        sb.append('=');
-        sb.append(((this.name == null)?"<null>":this.name));
-        sb.append(',');
-        /*
         sb.append("fullName");
         sb.append('=');
         sb.append(((this.fullName == null)?"<null>":this.fullName));
@@ -1150,12 +1138,6 @@ public class Project {
         sb.append('=');
         sb.append(((this.fork == null)?"<null>":this.fork));
         sb.append(',');
-        */
-        sb.append("url");
-        sb.append('=');
-        sb.append(((this.url == null)?"<null>":this.url));
-        sb.append(',');
-        /*
         sb.append("archiveUrl");
         sb.append('=');
         sb.append(((this.archiveUrl == null)?"<null>":this.archiveUrl));

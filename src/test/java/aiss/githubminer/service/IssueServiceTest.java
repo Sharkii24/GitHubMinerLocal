@@ -19,8 +19,9 @@ public class IssueServiceTest {
     void getIssuesRepo() {
         String owner = "spring-projects";
         String repo = "spring-framework";
+        String sinceIssues = "5";
         List<Issue> issues = null;
-        issues = service.getIssues(owner, repo);
+        issues = service.getIssues(owner, repo, sinceIssues);
         assertFalse(issues.isEmpty(), "The list of issues is empty!");
         System.out.println(issues);
     }
