@@ -48,4 +48,17 @@ class CommentServiceTest {
         assertFalse(comments.isEmpty(), "The list of comments is empty!");
         System.out.println(comments);
     }
+
+    @Test
+    @DisplayName("List of Comments with max pages")
+    void getCommentsMaxPages() {
+        String owner = "spring-projects";
+        String repo = "spring-framework";
+        String issueNumber = "28382";
+        String maxPages = "2";
+        List<Comment> comments = null;
+        comments = commentService.getCommentsMaxPages(owner, repo, issueNumber, maxPages);
+        assertFalse(comments.isEmpty(), "The list of comments is empty!");
+        System.out.println(comments);
+    }
 }

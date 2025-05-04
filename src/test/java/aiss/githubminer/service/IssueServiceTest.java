@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class IssueServiceTest {
 
     @Autowired
-    IssueService service;
+    IssueService issueService;
 
     @Test
     @DisplayName("List of Issues")
@@ -21,7 +21,7 @@ public class IssueServiceTest {
         String repo = "spring-framework";
         String sinceIssues = "5";
         List<Issue> issues = null;
-        issues = service.getIssues(owner, repo, sinceIssues);
+        issues = issueService.getIssues(owner, repo, sinceIssues);
         assertFalse(issues.isEmpty(), "The list of issues is empty!");
         System.out.println(issues);
     }
@@ -33,8 +33,20 @@ public class IssueServiceTest {
         String repo = "spring-framework";
         String number = "34810";
         Issue issue = null;
-        issue = service.getIssueByNumber(owner, repo, number);
+        issue = issueService.getIssueByNumber(owner, repo, number);
         assertFalse(issue == null, "The issue is null!");
         System.out.println(issue);
+    }
+
+    @Test
+    void getIssuesMaxPages() {
+        String owner = "spring-projects";
+        String repo = "spring-framework";
+        String sinceIssue = "5";
+        String maxPages = "2";
+        List<Issue> issues = null;
+        issues = issueService.getIssuesMaxPages(owner, repo, sinceIssue, maxPages);
+        assertFalse(issues.isEmpty(), "The list of issues is empty!");
+        System.out.println(issues);
     }
 }

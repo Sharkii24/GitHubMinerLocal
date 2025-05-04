@@ -42,9 +42,9 @@ public class Controller {
                                 @RequestParam(defaultValue = "2")String sinceCommits, @RequestParam(defaultValue = "20")String sinceIssues,
                                 @RequestParam(defaultValue = "2")String maxPages){
         Project project = projectService.getProjectByName(owner, repoName);
-        List<Commit> commits = commitService.getCommits(owner, repoName, sinceCommits);
-        List<Issue> issues = issueService.getIssues(owner, repoName, sinceIssues);
-        ProjectDB projectDB = transform.transform(project,commits,issues, owner, repoName);
+        List<Commit> commits = commitService.getCommitsMaxPages(owner, repoName, sinceCommits, maxPages);
+        List<Issue> issues = issueService.getIssuesMaxPages(owner, repoName, sinceIssues, maxPages);
+        ProjectDB projectDB = transform.transform(project,commits,issues, owner , repoName, maxPages);
         return projectDB;
     }
 
@@ -54,9 +54,9 @@ public class Controller {
                                @RequestParam(defaultValue = "2")String sinceCommits, @RequestParam(defaultValue = "20")String sinceIssues,
                                @RequestParam(defaultValue = "2")String maxPages) {
         Project project = projectService.getProjectByName(owner, repoName);
-        List<Commit> commits = commitService.getCommits(owner, repoName, sinceCommits);
-        List<Issue> issues = issueService.getIssues(owner, repoName, sinceIssues);
-        ProjectDB projectDB = transform.transform(project,commits,issues, owner , repoName);
+        List<Commit> commits = commitService.getCommitsMaxPages(owner, repoName, sinceCommits, maxPages);
+        List<Issue> issues = issueService.getIssuesMaxPages(owner, repoName, sinceIssues, maxPages);
+        ProjectDB projectDB = transform.transform(project,commits,issues, owner , repoName, maxPages);
         String uri = "http://localhost:8080/gitminer/projects";
         HttpEntity<ProjectDB> request = new HttpEntity<>(projectDB);
         ResponseEntity<ProjectDB> response = restTemplate.exchange(uri, HttpMethod.POST, request, ProjectDB.class);

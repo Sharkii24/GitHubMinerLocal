@@ -32,6 +32,8 @@ public class Issue {
     private User user;
     @JsonProperty("assignees")  //Hace falta (assignees Issue)
     private List<User> assignees;    // Assignee__1 (Issue) = User
+    @JsonProperty("reactions")
+    private IssueReactions reactions;    //Hace falta (votes Issue)
 
     /*
     @JsonProperty("comments")
@@ -185,6 +187,16 @@ public class Issue {
     @JsonProperty("updated_at")
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    @JsonProperty("reactions")
+    public IssueReactions getReactions() {
+        return reactions;
+    }
+
+    @JsonProperty("reactions")
+    public void setReactions(IssueReactions reactions) {
+        this.reactions = reactions;
     }
 
     /*
@@ -392,6 +404,10 @@ public class Issue {
         sb.append("updatedAt");
         sb.append('=');
         sb.append(((this.updatedAt == null)?"<null>":this.updatedAt));
+        sb.append(',');
+        sb.append("reactions");
+        sb.append('=');
+        sb.append(((this.reactions == null)?"<null>":this.reactions));
         sb.append(',');
         /*
         sb.append("comments");

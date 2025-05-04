@@ -15,9 +15,9 @@ public class Transform {
         this.commentService = commentService;
     }
 
-    public ProjectDB transform(Project project, List<Commit> commits, List<Issue> issues, String owner, String repoName){
+    public ProjectDB transform(Project project, List<Commit> commits, List<Issue> issues, String owner, String repoName, String maxPages){
         ProjectDB projectDB = transformProject(project);
-        transformIssues(issues, projectDB, owner, repoName);
+        transformIssues(issues, projectDB, owner, repoName, maxPages);
         transformCommits(commits, projectDB);
         return projectDB;
     }
@@ -26,7 +26,7 @@ public class Transform {
         return new ProjectDB(project.getId(), project.getName(), project.getUrl());
     }
 
-    public void transformIssues(List<Issue> issues, ProjectDB project, String owner, String repoName) {
+    public void transformIssues(List<Issue> issues, ProjectDB project, String owner, String repoName, String maxPages) {
         for (Issue issue : issues) {
             List<Label> label1 = issue.getLabels();
             List<String> labels = getLabels(label1);
@@ -35,11 +35,15 @@ public class Transform {
             if (issue.getAssignee() != null) {
                 assignee = transformUser(issue.getAssignee());
             }
-            Integer votes = null;
+            Integer votes = issue.getReactions().getTotalCount();
+            String closedAt = issue.getClosedAt();
+            if (closedAt == null) {
+                closedAt = "NOT CLOSED YET";
+            }
             IssueDB issueDB = new IssueDB(issue.getId(),issue.getTitle(), issue.getBody(), issue.getState(),
-                    issue.getCreatedAt(), issue.getUpdatedAt(), issue.getClosedAt(), labels, votes, author, assignee);
+                    issue.getCreatedAt(), issue.getUpdatedAt(), closedAt, labels, votes, author, assignee);
             project.getIssues().add(issueDB);
-            List<Comment> comments = commentService.getCommentByIssueNumber(owner, repoName, issue.getNumber().toString());
+            List<Comment> comments = commentService.getCommentsMaxPages(owner, repoName, issue.getNumber().toString(), maxPages);
             transformComments(comments,issueDB);
         }
     }
@@ -55,7 +59,10 @@ public class Transform {
     public void transformCommits(List<Commit> commits, ProjectDB project) {
         for (Commit commit : commits) {
             Author author = commit.getCommit().getAuthor();
-            String title = null;
+            String title = commit.getCommit().getMessage();
+            if (title.length() > 255) {
+                title = title.substring(0, 255);
+            }
             CommitDB commitDB = new CommitDB(commit.getSha(), title, commit.getCommit().getMessage(),
                     author.getName(), author.getEmail(), author.getDate(), commit.getUrl());
             project.getCommits().add(commitDB);
@@ -72,6 +79,7 @@ public class Transform {
     }
 
     public UserDB transformUser(User user) {
-        return new UserDB(user.getId(), user.getLogin(), null, user.getAvatarUrl(), user.getUrl());
+        String name = user.getLogin();
+        return new UserDB(user.getId(), user.getLogin(), name, user.getAvatarUrl(), user.getUrl());
     }
 }

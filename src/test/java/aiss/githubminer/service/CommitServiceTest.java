@@ -5,9 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -36,5 +34,18 @@ class CommitServiceTest {
         String sha = "ead76b63174fc152e9a9249fab6da15199b62a43";
         Commit commit = commitService.getCommitBySha(owner, repo, sha);
         System.out.println(commit);
+    }
+
+    @Test
+    @DisplayName("List of Commits with max pages")
+    void getCommitsMaxPages() {
+        String owner = "spring-projects";
+        String repo = "spring-framework";
+        String sinceCommits = "5";
+        String maxPages = "2";
+        List<Commit> commits = null;
+        commits = commitService.getCommitsMaxPages(owner, repo, sinceCommits, maxPages);
+        assertFalse(commits.isEmpty(), "The list of commits is empty!");
+        System.out.println(commits);
     }
 }

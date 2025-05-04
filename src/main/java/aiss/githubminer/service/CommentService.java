@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,5 +38,15 @@ public class CommentService {
         String uri = baseUri + owner + "/" + repo + "/issues/" + issueNumber + "/comments";
         ResponseEntity<Comment[]> response = authorizationService.getWithToken(uri, Comment[].class);
         return Arrays.asList(response.getBody());
+    }
+
+    public List<Comment> getCommentsMaxPages(String owner, String repo, String issueNumber, String maxPages) {
+        List<Comment> comments = new ArrayList<>();
+        for (Integer i = 0; i < Integer.parseInt(maxPages); i++) {
+            String uri = baseUri + owner + "/" + repo + "/issues/" + issueNumber + "/comments?page=" + i.toString();
+            ResponseEntity<Comment[]> response = authorizationService.getWithToken(uri, Comment[].class);
+            comments.addAll(Arrays.asList(response.getBody()));
+        }
+        return comments;
     }
 }

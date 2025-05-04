@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.ZoneOffset;
@@ -30,6 +30,18 @@ public class CommitService {
         String uri = baseUri + owner + "/" + repo + "/commits?since=" + since;
         ResponseEntity<Commit[]> response = authorizationService.getWithToken(uri, Commit[].class);
         return Arrays.asList(response.getBody());
+    }
+
+    public List<Commit> getCommitsMaxPages(String owner, String repo, String sinceCommits, String maxPages) {
+        List<Commit> commits = new ArrayList<>();
+        for (Integer i = 0; i < Integer.parseInt(maxPages); i++) {
+            ZonedDateTime dateTime = ZonedDateTime.now(ZoneOffset.UTC).minusDays(Integer.parseInt(sinceCommits));
+            String since = dateTime.format(DateTimeFormatter.ISO_INSTANT);
+            String uri = baseUri + owner + "/" + repo + "/commits?since=" + since + "&page=" + i.toString();
+            ResponseEntity<Commit[]> response = authorizationService.getWithToken(uri, Commit[].class);
+            commits.addAll(Arrays.asList(response.getBody()));
+        }
+        return commits;
     }
 
     // Service to list a Comment
