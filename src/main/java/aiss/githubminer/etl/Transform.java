@@ -48,7 +48,7 @@ public class Transform {
         }
     }
 
-    public List<String> getLabels(List<Label> labels){
+    private List<String> getLabels(List<Label> labels){
         List<String> res = new ArrayList<>();
         for (Label label : labels) {
             res.add(label.getName());
