@@ -28,7 +28,7 @@ public class IssueService {
     public List<Issue> getIssues(String owner, String repo, String sinceIssues) {
         ZonedDateTime dateTime = ZonedDateTime.now(ZoneOffset.UTC).minusDays(Integer.parseInt(sinceIssues));
         String since = dateTime.format(DateTimeFormatter.ISO_INSTANT);
-        String uri = baseUri + owner + "/" + repo + "/issues?since=" + since;
+        String uri = baseUri + owner + "/" + repo + "/issues?state=all&since=" + since;
         ResponseEntity<Issue[]> response = authorizationService.getWithToken(uri,Issue[].class);
         return Arrays.asList(response.getBody());
     }
@@ -38,7 +38,7 @@ public class IssueService {
         for (Integer i = 0; i < Integer.parseInt(maxPages); i++) {
             ZonedDateTime dateTime = ZonedDateTime.now(ZoneOffset.UTC).minusDays(Integer.parseInt(sinceIssues));
             String since = dateTime.format(DateTimeFormatter.ISO_INSTANT);
-            String uri = baseUri + owner + "/" + repo + "/issues?since=" + since + "&page=" + i.toString();
+            String uri = baseUri + owner + "/" + repo + "/issues?state=all&since=" + since + "&page=" + i.toString();
             ResponseEntity<Issue[]> response = authorizationService.getWithToken(uri,Issue[].class);
             issues.addAll(Arrays.asList(response.getBody()));
         }
