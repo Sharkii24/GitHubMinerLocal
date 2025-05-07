@@ -36,7 +36,6 @@ public class Controller {
         this.restTemplate = restTemplate;
     }
 
-    // http://localhost:8082/github/spring-projects/spring-framework
     @GetMapping("/{owner}/{repoName}")
     public ProjectDB getProject(@PathVariable String owner, @PathVariable String repoName,
                                 @RequestParam(defaultValue = "2")String sinceCommits, @RequestParam(defaultValue = "20")String sinceIssues,

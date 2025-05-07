@@ -8,22 +8,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Commit__1 {
 
     @JsonProperty("message")
-    private String message; // Hace falta (message Commit)
+    private String message;
     @JsonProperty("author")
-    private Author author;  // Hace falta (author
-
-    /*
-    @JsonProperty("url")
-    private String url;
-    @JsonProperty("committer")
-    private Author committer;
-    @JsonProperty("tree")
-    private Tree tree;
-    @JsonProperty("comment_count")
-    private Integer commentCount;
-    @JsonProperty("verification")
-    private Verification verification;
-    */
+    private Author author;
 
     @JsonProperty("message")
     public String getMessage() {
@@ -45,59 +32,6 @@ public class Commit__1 {
         this.author = author;
     }
 
-    /*
-    @JsonProperty("url")
-    public String getUrl() {
-        return url;
-    }
-
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    @JsonProperty("committer")
-    public Author getCommitter() {
-        return committer;
-    }
-
-    @JsonProperty("committer")
-    public void setCommitter(Author committer) {
-        this.committer = committer;
-    }
-
-    @JsonProperty("tree")
-    public Tree getTree() {
-        return tree;
-    }
-
-    @JsonProperty("tree")
-    public void setTree(Tree tree) {
-        this.tree = tree;
-    }
-
-    @JsonProperty("comment_count")
-    public Integer getCommentCount() {
-        return commentCount;
-    }
-
-    @JsonProperty("comment_count")
-    public void setCommentCount(Integer commentCount) {
-        this.commentCount = commentCount;
-    }
-
-    @JsonProperty("verification")
-    public Verification getVerification() {
-        return verification;
-    }
-
-    @JsonProperty("verification")
-    public void setVerification(Verification verification) {
-        this.verification = verification;
-    }
-
-     */
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -110,29 +44,6 @@ public class Commit__1 {
         sb.append('=');
         sb.append(((this.author == null)?"<null>":this.author));
         sb.append(',');
-        /*
-        sb.append("url");
-        sb.append('=');
-        sb.append(((this.url == null)?"<null>":this.url));
-        sb.append(',');
-        sb.append("committer");
-        sb.append('=');
-        sb.append(((this.committer == null)?"<null>":this.committer));
-        sb.append(',');
-        sb.append("tree");
-        sb.append('=');
-        sb.append(((this.tree == null)?"<null>":this.tree));
-        sb.append(',');
-        sb.append("commentCount");
-        sb.append('=');
-        sb.append(((this.commentCount == null)?"<null>":this.commentCount));
-        sb.append(',');
-        sb.append("verification");
-        sb.append('=');
-        sb.append(((this.verification == null)?"<null>":this.verification));
-        sb.append(',');
-
-         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

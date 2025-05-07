@@ -8,66 +8,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Issue {
 
-    @JsonProperty("id")   //Hace falta (id Issue)
+    @JsonProperty("id")
     private String id;
-    @JsonProperty("title")   //Hace falta (title Issue)
+    @JsonProperty("title")
     private String title;
-    @JsonProperty("body")    //Hace falta (description Issue)
+    @JsonProperty("body")
     private String body;
-    @JsonProperty("state")   //Hace falta (state Issue)
+    @JsonProperty("state")
     private String state;
-    @JsonProperty("created_at")   //Hace falta (createdAt Issue)
+    @JsonProperty("created_at")
     private String createdAt;
-    @JsonProperty("updated_at")   //Hace falta (updatedAt Issue)
+    @JsonProperty("updated_at")
     private String updatedAt;
-    @JsonProperty("closed_at")   //Hace falta (closedAt Issue)
+    @JsonProperty("closed_at")
     private String closedAt;
-    @JsonProperty("labels")   //Hace falta (labels Issue)
-    private List<Label> labels; // To String (List<String>)
-    @JsonProperty("number") //Hace falta (Identificador individual Get Issue)
+    @JsonProperty("labels")
+    private List<Label> labels;
+    @JsonProperty("number")
     private Integer number;
-    @JsonProperty("assignee")   //Hace falta (assignee Issue)
-    private User assignee;  // Assignee (Issue) = User
-    @JsonProperty("user")    //Hace falta (author Issue)
+    @JsonProperty("assignee")
+    private User assignee;
+    @JsonProperty("user")
     private User user;
-    @JsonProperty("assignees")  //Hace falta (assignees Issue)
-    private List<User> assignees;    // Assignee__1 (Issue) = User
+    @JsonProperty("assignees")
+    private List<User> assignees;
     @JsonProperty("reactions")
-    private IssueReactions reactions;    //Hace falta (votes Issue)
-
-    /*
-    @JsonProperty("comments")
-    private Integer comments;
-    @JsonProperty("url")
-    private String url;
-    @JsonProperty("node_id")
-    private String nodeId;
-    @JsonProperty("repository_url")
-    private String repositoryUrl;
-    @JsonProperty("labels_url")
-    private String labelsUrl;
-    @JsonProperty("comments_url")
-    private String commentsUrl;
-    @JsonProperty("events_url")
-    private String eventsUrl;
-    @JsonProperty("html_url")
-    private String htmlUrl;
-    @JsonProperty("milestone")
-    private Milestone milestone;
-    @JsonProperty("locked")
-    private Boolean locked;
-    @JsonProperty("active_lock_reason")
-    private String activeLockReason;
-    @JsonProperty("pull_request")
-    private PullRequest pullRequest;
-    @JsonProperty("closed_by")
-    private User closedBy;  // ClosedBy (Issue) = User
-    @JsonProperty("author_association")
-    private String authorAssociation;
-    @JsonProperty("state_reason")  // sobra
-    private String stateReason;
-
-     */
+    private IssueReactions reactions;
 
     @JsonProperty("id")
     public String getId() {
@@ -199,160 +165,6 @@ public class Issue {
         this.reactions = reactions;
     }
 
-    /*
-
-    @JsonProperty("comments")
-    public Integer getComments() {
-        return comments;
-    }
-
-    @JsonProperty("comments")
-    public void setComments(Integer comments) {
-        this.comments = comments;
-    }
-
-    @JsonProperty("url")
-    public String getUrl() {
-        return url;
-    }
-
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    @JsonProperty("node_id")
-    public String getNodeId() {
-        return nodeId;
-    }
-
-    @JsonProperty("node_id")
-    public void setNodeId(String nodeId) {
-        this.nodeId = nodeId;
-    }
-
-    @JsonProperty("repository_url")
-    public String getRepositoryUrl() {
-        return repositoryUrl;
-    }
-
-    @JsonProperty("repository_url")
-    public void setRepositoryUrl(String repositoryUrl) {
-        this.repositoryUrl = repositoryUrl;
-    }
-
-    @JsonProperty("labels_url")
-    public String getLabelsUrl() {
-        return labelsUrl;
-    }
-
-    @JsonProperty("labels_url")
-    public void setLabelsUrl(String labelsUrl) {
-        this.labelsUrl = labelsUrl;
-    }
-
-    @JsonProperty("comments_url")
-    public String getCommentsUrl() {
-        return commentsUrl;
-    }
-
-    @JsonProperty("comments_url")
-    public void setCommentsUrl(String commentsUrl) {
-        this.commentsUrl = commentsUrl;
-    }
-
-    @JsonProperty("events_url")
-    public String getEventsUrl() {
-        return eventsUrl;
-    }
-
-    @JsonProperty("events_url")
-    public void setEventsUrl(String eventsUrl) {
-        this.eventsUrl = eventsUrl;
-    }
-
-    @JsonProperty("html_url")
-    public String getHtmlUrl() {
-        return htmlUrl;
-    }
-
-    @JsonProperty("html_url")
-    public void setHtmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
-    }
-
-    @JsonProperty("milestone")
-    public Milestone getMilestone() {
-        return milestone;
-    }
-
-    @JsonProperty("milestone")
-    public void setMilestone(Milestone milestone) {
-        this.milestone = milestone;
-    }
-
-    @JsonProperty("locked")
-    public Boolean getLocked() {
-        return locked;
-    }
-
-    @JsonProperty("locked")
-    public void setLocked(Boolean locked) {
-        this.locked = locked;
-    }
-
-    @JsonProperty("active_lock_reason")
-    public String getActiveLockReason() {
-        return activeLockReason;
-    }
-
-    @JsonProperty("active_lock_reason")
-    public void setActiveLockReason(String activeLockReason) {
-        this.activeLockReason = activeLockReason;
-    }
-
-    @JsonProperty("pull_request")
-    public PullRequest getPullRequest() {
-        return pullRequest;
-    }
-
-    @JsonProperty("pull_request")
-    public void setPullRequest(PullRequest pullRequest) {
-        this.pullRequest = pullRequest;
-    }
-
-    @JsonProperty("closed_by")
-    public User getClosedBy() {
-        return closedBy;
-    }
-
-    @JsonProperty("closed_by")
-    public void setClosedBy(User closedBy) {
-        this.closedBy = closedBy;
-    }
-
-    @JsonProperty("author_association")
-    public String getAuthorAssociation() {
-        return authorAssociation;
-    }
-
-    @JsonProperty("author_association")
-    public void setAuthorAssociation(String authorAssociation) {
-        this.authorAssociation = authorAssociation;
-    }
-
-    @JsonProperty("state_reason")
-    public String getStateReason() {
-        return stateReason;
-    }
-
-    @JsonProperty("state_reason")
-    public void setStateReason(String stateReason) {
-        this.stateReason = stateReason;
-    }
-
-     */
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -409,68 +221,6 @@ public class Issue {
         sb.append('=');
         sb.append(((this.reactions == null)?"<null>":this.reactions));
         sb.append(',');
-        /*
-        sb.append("comments");
-        sb.append('=');
-        sb.append(((this.comments == null)?"<null>":this.comments));
-        sb.append(',');
-        sb.append("url");
-        sb.append('=');
-        sb.append(((this.url == null)?"<null>":this.url));
-        sb.append(',');
-        sb.append("nodeId");
-        sb.append('=');
-        sb.append(((this.nodeId == null)?"<null>":this.nodeId));
-        sb.append(',');
-        sb.append("repositoryUrl");
-        sb.append('=');
-        sb.append(((this.repositoryUrl == null)?"<null>":this.repositoryUrl));
-        sb.append(',');
-        sb.append("labelsUrl");
-        sb.append('=');
-        sb.append(((this.labelsUrl == null)?"<null>":this.labelsUrl));
-        sb.append(',');
-        sb.append("commentsUrl");
-        sb.append('=');
-        sb.append(((this.commentsUrl == null)?"<null>":this.commentsUrl));
-        sb.append(',');
-        sb.append("eventsUrl");
-        sb.append('=');
-        sb.append(((this.eventsUrl == null)?"<null>":this.eventsUrl));
-        sb.append(',');
-        sb.append("htmlUrl");
-        sb.append('=');
-        sb.append(((this.htmlUrl == null)?"<null>":this.htmlUrl));
-        sb.append(',');
-        sb.append("milestone");
-        sb.append('=');
-        sb.append(((this.milestone == null)?"<null>":this.milestone));
-        sb.append(',');
-        sb.append("locked");
-        sb.append('=');
-        sb.append(((this.locked == null)?"<null>":this.locked));
-        sb.append(',');
-        sb.append("activeLockReason");
-        sb.append('=');
-        sb.append(((this.activeLockReason == null)?"<null>":this.activeLockReason));
-        sb.append(',');
-        sb.append("pullRequest");
-        sb.append('=');
-        sb.append(((this.pullRequest == null)?"<null>":this.pullRequest));
-        sb.append(',');
-        sb.append("closedBy");
-        sb.append('=');
-        sb.append(((this.closedBy == null)?"<null>":this.closedBy));
-        sb.append(',');
-        sb.append("authorAssociation");
-        sb.append('=');
-        sb.append(((this.authorAssociation == null)?"<null>":this.authorAssociation));
-        sb.append(',');
-        sb.append("stateReason");
-        sb.append('=');
-        sb.append(((this.stateReason == null)?"<null>":this.stateReason));
-        sb.append(',');
-         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

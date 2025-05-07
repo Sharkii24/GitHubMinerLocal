@@ -23,7 +23,7 @@ public class Transform {
     }
 
     public ProjectDB transformProject(Project project){
-        return new ProjectDB(project.getId(), project.getName(), project.getUrl());
+        return new ProjectDB(project.getId(), project.getName(), project.getHtmlUrl());
     }
 
     public void transformIssues(List<Issue> issues, ProjectDB project, String owner, String repoName, String maxPages) {
@@ -32,7 +32,10 @@ public class Transform {
             List<String> labels = getLabels(label1);
             UserDB author = transformUser(issue.getUser());
             UserDB assignee = null;
-            if (issue.getAssignee() != null) {
+            if (!issue.getAssignees().isEmpty()) {
+                assignee = transformUser(issue.getAssignees().get(0));
+            }
+            else if (issue.getAssignee() != null) {
                 assignee = transformUser(issue.getAssignee());
             }
             Integer votes = issue.getReactions().getTotalCount();
@@ -64,7 +67,7 @@ public class Transform {
                 title = title.substring(0, 255);
             }
             CommitDB commitDB = new CommitDB(commit.getSha(), title, commit.getCommit().getMessage(),
-                    author.getName(), author.getEmail(), author.getDate(), commit.getUrl());
+                    author.getName(), author.getEmail(), author.getDate(), commit.getHtmlUrl());
             project.getCommits().add(commitDB);
         }
     }
@@ -80,6 +83,6 @@ public class Transform {
 
     public UserDB transformUser(User user) {
         String name = user.getLogin();
-        return new UserDB(user.getId(), user.getLogin(), name, user.getAvatarUrl(), user.getUrl());
+        return new UserDB(user.getId(), user.getLogin(), name, user.getAvatarUrl(), user.getHtmlUrl());
     }
 }

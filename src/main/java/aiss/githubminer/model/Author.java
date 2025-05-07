@@ -7,14 +7,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Author {
 
-    // Commiter (Commit) = Author
-
     @JsonProperty("name")
-    private String name;  //author name
+    private String name;
     @JsonProperty("email")
-    private String email;  //author email
+    private String email;
     @JsonProperty("date")
-    private String date;  //authored date
+    private String date;
 
     @JsonProperty("name")
     public String getName() {

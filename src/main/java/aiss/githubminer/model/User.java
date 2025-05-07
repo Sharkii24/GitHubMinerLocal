@@ -7,54 +7,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
-    // Creator (Issue) = User
-    // ClosedBy (Issue) = User
-    // Assignee__1 (Issue) = User
-    // Assignee (Issue) = User
-    // Creator (Project) = User
-    // Author__1 (Commit) = User
-    // Commiter__1 (Commit) = User
-
     @JsonProperty("id")
-    private String id; // Hace falta (id User)
+    private String id;
     @JsonProperty("login")
-    private String login;   // Hace falta (username User)
+    private String login;
     @JsonProperty("avatar_url")
-    private String avatarUrl;   // Hace falta (avatarUrl User)
-    @JsonProperty("url")
-    private String url; // Hace falta (webUrl User)
-
-    /*
-    @JsonProperty("node_id")
-    private String nodeId;
-    @JsonProperty("gravatar_id")
-    private String gravatarId;
+    private String avatarUrl;
     @JsonProperty("html_url")
     private String htmlUrl;
-    @JsonProperty("followers_url")
-    private String followersUrl;
-    @JsonProperty("following_url")
-    private String followingUrl;
-    @JsonProperty("gists_url")
-    private String gistsUrl;
-    @JsonProperty("starred_url")
-    private String starredUrl;
-    @JsonProperty("subscriptions_url")
-    private String subscriptionsUrl;
-    @JsonProperty("organizations_url")
-    private String organizationsUrl;
-    @JsonProperty("repos_url")
-    private String reposUrl;
-    @JsonProperty("events_url")
-    private String eventsUrl;
-    @JsonProperty("received_events_url")
-    private String receivedEventsUrl;
-    @JsonProperty("type")
-    private String type;
-    @JsonProperty("site_admin")
-    private Boolean siteAdmin;
-
-     */
 
     @JsonProperty("login")
     public String getLogin() {
@@ -86,38 +46,6 @@ public class User {
         this.avatarUrl = avatarUrl;
     }
 
-    @JsonProperty("url")
-    public String getUrl() {
-        return url;
-    }
-
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    /*
-
-    @JsonProperty("node_id")
-    public String getNodeId() {
-        return nodeId;
-    }
-
-    @JsonProperty("node_id")
-    public void setNodeId(String nodeId) {
-        this.nodeId = nodeId;
-    }
-
-    @JsonProperty("gravatar_id")
-    public String getGravatarId() {
-        return gravatarId;
-    }
-
-    @JsonProperty("gravatar_id")
-    public void setGravatarId(String gravatarId) {
-        this.gravatarId = gravatarId;
-    }
-
     @JsonProperty("html_url")
     public String getHtmlUrl() {
         return htmlUrl;
@@ -127,118 +55,6 @@ public class User {
     public void setHtmlUrl(String htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
-
-    @JsonProperty("followers_url")
-    public String getFollowersUrl() {
-        return followersUrl;
-    }
-
-    @JsonProperty("followers_url")
-    public void setFollowersUrl(String followersUrl) {
-        this.followersUrl = followersUrl;
-    }
-
-    @JsonProperty("following_url")
-    public String getFollowingUrl() {
-        return followingUrl;
-    }
-
-    @JsonProperty("following_url")
-    public void setFollowingUrl(String followingUrl) {
-        this.followingUrl = followingUrl;
-    }
-
-    @JsonProperty("gists_url")
-    public String getGistsUrl() {
-        return gistsUrl;
-    }
-
-    @JsonProperty("gists_url")
-    public void setGistsUrl(String gistsUrl) {
-        this.gistsUrl = gistsUrl;
-    }
-
-    @JsonProperty("starred_url")
-    public String getStarredUrl() {
-        return starredUrl;
-    }
-
-    @JsonProperty("starred_url")
-    public void setStarredUrl(String starredUrl) {
-        this.starredUrl = starredUrl;
-    }
-
-    @JsonProperty("subscriptions_url")
-    public String getSubscriptionsUrl() {
-        return subscriptionsUrl;
-    }
-
-    @JsonProperty("subscriptions_url")
-    public void setSubscriptionsUrl(String subscriptionsUrl) {
-        this.subscriptionsUrl = subscriptionsUrl;
-    }
-
-    @JsonProperty("organizations_url")
-    public String getOrganizationsUrl() {
-        return organizationsUrl;
-    }
-
-    @JsonProperty("organizations_url")
-    public void setOrganizationsUrl(String organizationsUrl) {
-        this.organizationsUrl = organizationsUrl;
-    }
-
-    @JsonProperty("repos_url")
-    public String getReposUrl() {
-        return reposUrl;
-    }
-
-    @JsonProperty("repos_url")
-    public void setReposUrl(String reposUrl) {
-        this.reposUrl = reposUrl;
-    }
-
-    @JsonProperty("events_url")
-    public String getEventsUrl() {
-        return eventsUrl;
-    }
-
-    @JsonProperty("events_url")
-    public void setEventsUrl(String eventsUrl) {
-        this.eventsUrl = eventsUrl;
-    }
-
-    @JsonProperty("received_events_url")
-    public String getReceivedEventsUrl() {
-        return receivedEventsUrl;
-    }
-
-    @JsonProperty("received_events_url")
-    public void setReceivedEventsUrl(String receivedEventsUrl) {
-        this.receivedEventsUrl = receivedEventsUrl;
-    }
-
-    @JsonProperty("type")
-    public String getType() {
-        return type;
-    }
-
-    @JsonProperty("type")
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    @JsonProperty("site_admin")
-    public Boolean getSiteAdmin() {
-        return siteAdmin;
-    }
-
-    @JsonProperty("site_admin")
-    public void setSiteAdmin(Boolean siteAdmin) {
-        this.siteAdmin = siteAdmin;
-    }
-
-     */
 
     @Override
     public String toString() {
@@ -256,69 +72,10 @@ public class User {
         sb.append('=');
         sb.append(((this.avatarUrl == null)?"<null>":this.avatarUrl));
         sb.append(',');
-        sb.append("url");
-        sb.append('=');
-        sb.append(((this.url == null)?"<null>":this.url));
-        sb.append(',');
-        /*
-        sb.append("nodeId");
-        sb.append('=');
-        sb.append(((this.nodeId == null)?"<null>":this.nodeId));
-        sb.append(',');
-        sb.append("gravatarId");
-        sb.append('=');
-        sb.append(((this.gravatarId == null)?"<null>":this.gravatarId));
-        sb.append(',');
         sb.append("htmlUrl");
         sb.append('=');
         sb.append(((this.htmlUrl == null)?"<null>":this.htmlUrl));
         sb.append(',');
-        sb.append("followersUrl");
-        sb.append('=');
-        sb.append(((this.followersUrl == null)?"<null>":this.followersUrl));
-        sb.append(',');
-        sb.append("followingUrl");
-        sb.append('=');
-        sb.append(((this.followingUrl == null)?"<null>":this.followingUrl));
-        sb.append(',');
-        sb.append("gistsUrl");
-        sb.append('=');
-        sb.append(((this.gistsUrl == null)?"<null>":this.gistsUrl));
-        sb.append(',');
-        sb.append("starredUrl");
-        sb.append('=');
-        sb.append(((this.starredUrl == null)?"<null>":this.starredUrl));
-        sb.append(',');
-        sb.append("subscriptionsUrl");
-        sb.append('=');
-        sb.append(((this.subscriptionsUrl == null)?"<null>":this.subscriptionsUrl));
-        sb.append(',');
-        sb.append("organizationsUrl");
-        sb.append('=');
-        sb.append(((this.organizationsUrl == null)?"<null>":this.organizationsUrl));
-        sb.append(',');
-        sb.append("reposUrl");
-        sb.append('=');
-        sb.append(((this.reposUrl == null)?"<null>":this.reposUrl));
-        sb.append(',');
-        sb.append("eventsUrl");
-        sb.append('=');
-        sb.append(((this.eventsUrl == null)?"<null>":this.eventsUrl));
-        sb.append(',');
-        sb.append("receivedEventsUrl");
-        sb.append('=');
-        sb.append(((this.receivedEventsUrl == null)?"<null>":this.receivedEventsUrl));
-        sb.append(',');
-        sb.append("type");
-        sb.append('=');
-        sb.append(((this.type == null)?"<null>":this.type));
-        sb.append(',');
-        sb.append("siteAdmin");
-        sb.append('=');
-        sb.append(((this.siteAdmin == null)?"<null>":this.siteAdmin));
-        sb.append(',');
-
-         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {
@@ -326,5 +83,4 @@ public class User {
         }
         return sb.toString();
     }
-
 }
