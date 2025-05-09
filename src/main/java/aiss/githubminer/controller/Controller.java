@@ -38,7 +38,8 @@ public class Controller {
 
     @GetMapping("/{owner}/{repoName}")
     public ProjectDB getProject(@PathVariable String owner, @PathVariable String repoName,
-                                @RequestParam(defaultValue = "2")String sinceCommits, @RequestParam(defaultValue = "20")String sinceIssues,
+                                @RequestParam(defaultValue = "2")String sinceCommits,
+                                @RequestParam(defaultValue = "20")String sinceIssues,
                                 @RequestParam(defaultValue = "2")String maxPages){
         Project project = projectService.getProjectByName(owner, repoName);
         List<Commit> commits = commitService.getCommitsMaxPages(owner, repoName, sinceCommits, maxPages);
@@ -50,7 +51,8 @@ public class Controller {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{owner}/{repoName}")
     public ProjectDB createProject(@PathVariable String owner, @PathVariable String repoName,
-                               @RequestParam(defaultValue = "2")String sinceCommits, @RequestParam(defaultValue = "20")String sinceIssues,
+                               @RequestParam(defaultValue = "2")String sinceCommits,
+                               @RequestParam(defaultValue = "20")String sinceIssues,
                                @RequestParam(defaultValue = "2")String maxPages) {
         Project project = projectService.getProjectByName(owner, repoName);
         List<Commit> commits = commitService.getCommitsMaxPages(owner, repoName, sinceCommits, maxPages);
